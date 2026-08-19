@@ -1,5 +1,8 @@
+{% extends "shop/base.html" %}
 {% load static %}
-{% extends "shop/base.html" %}{% block title %}NOIR — твой выбор{% endblock %}
+
+{% block title %}NOIR — твой выбор{% endblock %}
+
 {% block content %}
 <section class="hero-reference">
   <div class="hero-copy">
@@ -50,4 +53,4 @@
   <section class="split" id="telegram"><div><div class="eyebrow">TELEGRAM-BOT</div><h2>Каталог внутри<br><span>Telegram.</span></h2><p>Быстрый доступ к категориям, товарам, характеристикам и магазинам.</p><a class="btn btn-gold" href="https://t.me/VapeShopDemo_bot" target="_blank" rel="noopener">➤ Открыть Telegram-бот</a></div><div class="phone"><div class="tg-top">➤ NOIR SHOP</div><div class="tg-msg">Главное меню</div><button>Каталог</button><button>Магазины</button><button>Актуальное наличие</button><button>Связаться с администратором</button></div></section>
   <section class="stores-preview"><div class="catalog-title-row"><h2>Магазины рядом</h2><a href="/stores/">Все магазины <b>→</b></a></div><div class="store-grid">{% for s in stores %}<div class="store"><span>◉ {{s.distance}}</span><h3>{{s.name}}</h3><p>{{s.address}}</p><small>{{s.hours}} · {{s.phone}}</small></div>{% endfor %}</div></section>
 </section>
-{% endblock %}
+{% endblock content %}
