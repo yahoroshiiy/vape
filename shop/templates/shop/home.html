@@ -1,0 +1,53 @@
+{% load static %}
+{% extends "shop/base.html" %}{% block title %}NOIR — твой выбор{% endblock %}
+{% block content %}
+<section class="hero-reference">
+  <div class="hero-copy">
+    <div class="eyebrow">18+ · КАТАЛОГ · МАГАЗИНЫ · TELEGRAM</div>
+    <h1>Твой выбор.<br><span>Твои правила.</span></h1>
+    <p>Современная цифровая витрина для вейп-шопа:<br class="desktop-only"> каталог, наличие, характеристики и ближайшие магазины —<br class="desktop-only"> без дистанционной продажи.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="/catalog/">▦ <b>Смотреть каталог</b> <span>→</span></a>
+      <a class="btn btn-dark" href="/stores/">⌖ <b>Найти магазин</b></a>
+      <a class="hero-tg" href="https://t.me/VapeShopDemo_bot" target="_blank" rel="noopener">➤ <b>Связаться в Telegram</b></a>
+    </div>
+    <div class="hero-benefits">
+      <div><strong>18+</strong><span>Только для<br>совершеннолетних</span></div>
+      <div><strong>◇</strong><span>Оригинальная<br>продукция</span></div>
+      <div><strong>◉</strong><span>Проверенные<br>магазины</span></div>
+      <div><strong>ϟ</strong><span>Быстрый доступ<br>к каталогу</span></div>
+    </div>
+  </div>
+
+  <div class="hero-product">
+    <div class="hero-art"><img src="{% static 'shop/products/generated-4.jpg' %}" alt="VooPoo Drag S2"></div>
+    <div class="hero-info">
+      <div class="hero-brand">VOOPOO</div>
+      <h2>DRAG S2</h2>
+      <ul>
+        <li>ϟ <span>Мощность до 60 Вт</span></li>
+        <li>◉ <span>Аккумулятор 2500 мАч</span></li>
+        <li>◇ <span>Регулировка обдува</span></li>
+      </ul>
+      <a href="/catalog/?q=VooPoo%20Drag%20S2" class="hero-catalog-link">Смотреть в каталоге <b>→</b></a>
+    </div>
+  </div>
+</section>
+
+<section class="home-catalog-ref">
+  <div class="catalog-title-row"><h2>Каталог устройств</h2><a href="/catalog/">Весь каталог <b>→</b></a></div>
+  <div class="reference-grid">
+    {% for p in featured %}
+    <a class="reference-card" href="/catalog/{{p.id}}/">
+      <div class="reference-photo {% if not p.image_url %}no-photo{% endif %}">{% if p.image_url %}<img src="{{p.image_url}}" alt="{{p.name}}" loading="lazy">{% endif %}<span>В НАЛИЧИИ</span></div>
+      <div class="reference-body"><small>{{p.category.name}}</small><h3>{{p.name}}</h3><p>{{p.subtitle}}</p><b>{{p.price}} ₽</b></div>
+    </a>
+    {% empty %}<p>Запустите <code>python manage.py seed</code>.</p>{% endfor %}
+  </div>
+</section>
+
+<section class="below-fold">
+  <section class="split" id="telegram"><div><div class="eyebrow">TELEGRAM-BOT</div><h2>Каталог внутри<br><span>Telegram.</span></h2><p>Быстрый доступ к категориям, товарам, характеристикам и магазинам.</p><a class="btn btn-gold" href="https://t.me/VapeShopDemo_bot" target="_blank" rel="noopener">➤ Открыть Telegram-бот</a></div><div class="phone"><div class="tg-top">➤ NOIR SHOP</div><div class="tg-msg">Главное меню</div><button>Каталог</button><button>Магазины</button><button>Актуальное наличие</button><button>Связаться с администратором</button></div></section>
+  <section class="stores-preview"><div class="catalog-title-row"><h2>Магазины рядом</h2><a href="/stores/">Все магазины <b>→</b></a></div><div class="store-grid">{% for s in stores %}<div class="store"><span>◉ {{s.distance}}</span><h3>{{s.name}}</h3><p>{{s.address}}</p><small>{{s.hours}} · {{s.phone}}</small></div>{% endfor %}</div></section>
+</section>
+{% endblock %}

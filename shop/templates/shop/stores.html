@@ -1,0 +1,3 @@
+{% extends "shop/base.html" %}{% block title %}Магазины — NOIR{% endblock %}{% block content %}
+<section class="catalog-head"><div class="eyebrow">OFFLINE STORES</div><h1>Магазины.</h1><p>Посмотрите адрес, часы работы и актуальное наличие перед визитом.</p></section>
+<section class="store-list">{% for s in stores %}<article class="store big"><div><span>● ОТКРЫТ · {{s.distance}}</span><h2>{{s.name}}</h2><p>{{s.address}}</p></div><div><b>{{s.hours}}</b><small>{{s.phone}}</small></div><a class="gold" href="https://www.google.com/maps/search/?api=1&query={{s.address|urlencode}}" target="_blank">На карте</a></article>{% endfor %}</section>{% endblock %}
